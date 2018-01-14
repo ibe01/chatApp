@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Chat.. </title>
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+   <script src="/socket.io/socket.io.js">
+	 </script>
+	    <p id="typing"></p><br>
+        <div id="output"></div><br>
+        <input type="text" id="name" placeholder="Your Name:"/><br>
+	    <textarea id="msg" placeholder="type your msg.."></textarea><br>
+	    <input type="button" id="btn" value="send"/><br>
+
+	 <script>
+
+ var socket = io();
+
+ var u = document.getElementById('typing');
+ var v = document.getElementById('output');
+ var x = document.getElementById('name');
+ var y = document.getElementById('msg');
+ var z = document.getElementById('btn');
+
+           y.addEventListener('keypress', function() {
+               socket.emit('type', x.value);
+          });
+
+		   z.addEventListener('click', function() {
+           	   socket.emit('chat', {a : y.value,
+	                     b : x.value});
+			   y.value = "";
+         });
+     socket.on('chat', function(data) {
+	    u.innerHTML = "";
+	    v.innerHTML += data.b+"	:	"+data.a+"<br>";
+	 });
+
+	 socket.on('type', function(data) {
+	    u.innerHTML = data+"is typing....<br>";
+	 });
+
+	 </script>
+  </body>
+</html>
