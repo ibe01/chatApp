@@ -1,13 +1,14 @@
 var express = require('express');
 var app = express();
 var sock = require('socket.io');
+var port = process.env.PORT || 3000;
 
 app.get('/', function(req,res) {
 	res.sendFile(__dirname+'/pub/index.html');
 });
 
-var server = app.listen(3000, function() {
-	console.log("listening..... on port 3000");
+var server = app.listen(port, function() {
+	console.log("listening..... on port " + port);
 });
 
 var io = sock(server);
