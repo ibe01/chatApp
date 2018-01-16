@@ -2,11 +2,11 @@
   "name": "sp_chat",
   "version": "1.0.0",
   "description": "simple chat app",
-  "main": "io.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "start": "node io.js",
+  "start": "node app.js",
   "author": "me",
   "license": "ISC",
   "dependencies": {
