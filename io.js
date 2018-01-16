@@ -7,10 +7,6 @@ app.get('/', function(req,res) {
 	res.sendFile(__dirname+'/pub/index.html');
 });
 
-var server = app.listen(port, function() {
-	console.log("listening..... on port " + port);
-});
-
 var io = sock(server);
 
 io.on('connection', function(socket) {
@@ -24,4 +20,8 @@ io.on('connection', function(socket) {
 	   socket.on('type', function(data) {
 	   socket.broadcast.emit('type',data);
 	   });
+});
+
+var server = app.listen(port, function() {
+	console.log("listening..... on port " + port);
 });
