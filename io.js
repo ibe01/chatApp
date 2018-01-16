@@ -8,7 +8,6 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/pub/index.html'));
 });
 
-
 var server = app.listen(port, function() {
 	console.log("listening..... on port " + port);
 });
